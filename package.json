@@ -10,7 +10,6 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iangoodwin173/geo-pairing.git"
@@ -20,7 +19,11 @@
   "bugs": {
     "url": "https://github.com/iangoodwin173/geo-pairing/issues"
   },
- "devDependencies": {
+  "devDependencies": {
     "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express-graphql": "^0.12.0"
   }
 }
