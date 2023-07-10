@@ -8,7 +8,7 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 //IMPORT each Schema typeDefs file here
 
-require('./connection'); // REQUIRE the connection.js file
+require('./config/connection'); // REQUIRE the connection.js file
 
 const app = express();
 
