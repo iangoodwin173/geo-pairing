@@ -1,5 +1,6 @@
 {
   "name": "geo-pairing",
+<<<<<<< HEAD
   "version": "0.1.0",
   "private": true,
   "main": "server/server.js",
@@ -15,28 +16,32 @@
     "react-scripts": "^4.0.3",
     "web-vitals": "^2.1.4"
   },
+=======
+  "version": "1.0.0",
+  "description": "geo-pairing",
+  "main": "server.js",
+>>>>>>> ae9f209426ef8c94c7f7ec70d95347b03f036514
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iangoodwin173/geo-pairing.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Micci Benner, Carol Wargo, Ian Goodwin, My Nguyen, Samira Borghei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iangoodwin173/geo-pairing/issues"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express-graphql": "^0.12.0"
   }
 }
