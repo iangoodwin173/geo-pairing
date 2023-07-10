@@ -1,3 +1,5 @@
+// THIS IS AN EXAMPLE FROM THE MINI PROJECT
+
 //IMPORT modules that define the GraphQL schema 
 const typeDefs = require('./typeDefs');
 

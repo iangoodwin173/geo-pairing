@@ -1,3 +1,4 @@
+// THIS IS A START, CHANGES TO BE MADE AS PROJECT EVOLVES
 // EXPRESS SERVER
 require('dotenv').config();
 const express = require('express');
