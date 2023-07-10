@@ -12,7 +12,7 @@ require('./config/connection'); // REQUIRE the connection.js file
 
 const app = express();
 
-// DEFINE your GraphQL schema using buildSchema
+// DEFINE GraphQL schema using buildSchema
 // ADD each IMPORTED Schema type Query
 const schema = buildSchema(`
   type Query {
@@ -20,7 +20,7 @@ const schema = buildSchema(`
   }
 `);
 
-// DEFINE resolvers for your GraphQL schema
+// DEFINE resolvers for GraphQL schema
 const root = {
   hello: () => 'Hello, GraphQL!'
 };
