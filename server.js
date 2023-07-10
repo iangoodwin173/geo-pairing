@@ -1,7 +1,12 @@
+// EXPRESS SERVER
+require('dotenv').config();
 const express = require('express');
+
+
+// IMPORT express-graphql middleware function to handle GraphQL requests
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
-//IMPORT each Schema type file
+//IMPORT each Schema type file here
 
 const app = express();
 
@@ -19,6 +24,7 @@ const root = {
 };
 
 // SET UP the GraphQL endpoint
+// ADD middleware function graphqlHTTP to handle GraphQL requests
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
