@@ -6,7 +6,9 @@ const express = require('express');
 // IMPORT express-graphql middleware function to handle GraphQL requests
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
-//IMPORT each Schema type file here
+//IMPORT each Schema typeDefs file here
+
+require('./connection'); // REQUIRE the connection.js file
 
 const app = express();
 
