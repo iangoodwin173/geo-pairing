@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
-// ESTABLISH a connection to the database through .env file
-// WE all have to set up our own .env file in the root of the project file: 
-// file name: ".env"
+const connectionURI = 'mongodb://localhost:27017/mydatabase';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/programming-thoughts');
+mongoose.connect(connectionURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-module.exports = mongoose.connection;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB database');
+});
