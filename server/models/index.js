@@ -1,9 +1,5 @@
-/* THIS IS AN EXAMPLE FROM THE MINI PROJECT
+const User = require('./User');
+const Drink = require('./Drink');
 
-require all models here
-const Tech = require('./Tech');
 
-EXPORT all models from this file
-module.exports = { Tech};
-
-*/
+module.exports = { User, Drink};
