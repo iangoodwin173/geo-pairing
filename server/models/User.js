@@ -30,7 +30,7 @@ const userSchema = new Schema({
       ref: 'Drink',
     },
   ],
-// saved book count
+// saved drink count
   drinksCount: {
     type: Number,
     default: 0,
