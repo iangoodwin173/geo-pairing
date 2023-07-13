@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     drinks: [Drink]!
+    drinksCount: Int
   }
 
   type Drink {
@@ -15,6 +16,7 @@ const typeDefs = gql`
     recipe: String
     image: String
     link: String
+
   }
 
   type Auth {
@@ -34,7 +36,6 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDrink(drinkText: String!): Drink
-    addComment(drinkId: ID!, commentText: String!): Drink
     removeDrink(drinkId: ID!): Drink
   }
 `;
