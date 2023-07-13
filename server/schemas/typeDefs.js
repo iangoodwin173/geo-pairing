@@ -35,6 +35,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addDrink(drinkText: String!): Drink
     addComment(drinkId: ID!, commentText: String!): Drink
+    removeDrink(drinkId: ID!): Drink
   }
 `;
 
