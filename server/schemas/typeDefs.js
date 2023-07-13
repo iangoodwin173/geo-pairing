@@ -11,9 +11,10 @@ const typeDefs = gql`
 
   type Drink {
     _id: ID
-    drinkText: String
-    drinkAuthor: String
-    createdAt: String
+    name: String
+    recipe: String
+    image: String
+    link: String
   }
 
   type Auth {
