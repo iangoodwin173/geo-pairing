@@ -1,0 +1,38 @@
+[
+    {
+      "drinkId": "",
+      "name": "Manhattan",
+      "recipe": "alcohol + vermouth + bitters",
+      "image": "https://www.useeffect.de/",
+        "link": "https://www.useeffect.de/"
+
+    },
+
+    {
+        "drinkId": "",
+        "name": "Old Fashioned",
+        "recipe": "Whiskey, bitters, sugar, orange peel, and cherry",
+        "image": "https://www.useeffect.de/",
+          "link": "https://www.useeffect.de/"
+          
+      },
+
+      {
+        "drinkId": "",
+        "name": "Martini",
+        "recipe": "Gin, dry vermouth, and an olive or lemon twist",
+        "image": "https://www.useeffect.de/",
+          "link": "https://www.useeffect.de/"
+          
+      },
+
+      {
+        "drinkId": "",
+        "name": "daiquiri",
+        "recipe": "Rum, lime juice, and sugar or simple syrup",
+        "image": "https://www.useeffect.de/",
+          "link": "https://www.useeffect.de/"
+          
+      }
+
+  ]
