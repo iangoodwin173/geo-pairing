@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectionURI = 'mongodb://localhost:27017/mydatabase';
+const connectionURI = 'mongodb://localhost:27017/geo-pairing-db';
 
 mongoose.connect(connectionURI, {
   useNewUrlParser: true,
