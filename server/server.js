@@ -1,37 +1,42 @@
-const mongoose = require('mongoose');
-const { ApolloServer, gql } = require('apollo-server');
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/mydatabase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
 
-const db = mongoose.connection;
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-// Handle connection events
-db.on('error', console.error.bind(console, 'Connection error:'));
-db.once('open', () => {
-  startApolloServer();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-// Define the startApolloServer function
+
+// Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
-  const typeDefs = gql`
-    type Query {
-      hello: String
-    }
-  `;
-
-  const resolvers = {
-    Query: {
-      hello: () => 'Hello, world!',
-    },
+  await server.start();
+  server.applyMiddleware({ app });
+  
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    })
+  })
   };
-
-  const server = new ApolloServer({ typeDefs, resolvers });
-
-  server.listen().then(({ url }) => {
-    console.log(`Apollo Server is running at ${url}`);
-  });
-};
+  
+// Call the async function to start the server
+  startApolloServer();
+ 
