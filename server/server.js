@@ -14,3 +14,9 @@ db.once('open', () => {
   // Start the Apollo Server here
   startApolloServer();
 });
+
+// Define the startApolloServer function
+const startApolloServer = async () => {
+  // ... your Apollo Server setup code ...
+};
+
