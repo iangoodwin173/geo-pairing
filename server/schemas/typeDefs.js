@@ -17,9 +17,7 @@ const typeDefs = gql`
     image: String
     link: String
 
-  }
-
-  // when type is changed, query follows 
+  } 
   
   type Cocktail {
     idDrink: ID
