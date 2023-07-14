@@ -28,6 +28,35 @@
   color: #61dafb;
 }
 
+.about-page-container {
+  text-align: center;
+}
+
+.nav-tabs {
+  list-style: none;
+  display: inline-flex;
+  text-align: center;
+  position: absolute;
+  right: 25px;
+  
+}
+
+.nav-link {
+  padding: 20px;
+  color: darkgray;
+  text-decoration: none;
+}
+
+.about-page-container {
+  font-size: large;
+}
+
+.about-text {
+  font-style: italic;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
