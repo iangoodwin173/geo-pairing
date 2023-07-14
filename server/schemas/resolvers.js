@@ -24,7 +24,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    getMargarita: async () => {
+      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+      const data = await response.json()
+      return data.drinks 
+    }
   },
+  
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
