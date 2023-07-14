@@ -1,25 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
 import Home from './pages/Home';
-
-
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
 });
+const GET_COCKTAILS = gql `
+query {
+  getCocktails {
+  idDrink
+  strDrink
+  strInstructions
+  }
+}`
 
 function App() {
+  const {loading, error, data} = useQuery(GET_COCKTAILS)
+  if (loading) return <p>loading...</p>
+  if (error) return <p>error...</p>
   return (
     <ApolloProvider client={client}>
+   
+   {data.getCocktails.map(cocktail =>(
+    <div key={cocktail.idDrink}>
+      <h2>{cocktail.strDrink}</h2>
+<p>{cocktail.strInstructions}</p>
+    </div>
+   ))}
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Switch>
-            <Route 
-              path="/" 
-              element={<Home />}
-            />
-           
+            <Route exact path="/" component={Home} />
           </Switch>
         </div>
       </Router>
@@ -27,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

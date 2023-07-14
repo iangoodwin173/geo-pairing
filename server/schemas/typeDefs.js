@@ -19,6 +19,14 @@ const typeDefs = gql`
 
   }
 
+  // when type is changed, query follows 
+  
+  type Cocktail {
+    idDrink: ID
+    strDrink: String
+    strInstructions: String
+
+  }
   type Auth {
     token: ID!
     user: User
@@ -30,6 +38,7 @@ const typeDefs = gql`
     drinks(username: String): [Drink]
     drink(drinkId: ID!): Drink
     me: User
+    getCocktails: [Cocktail] 
   }
 
   type Mutation {
