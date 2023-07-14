@@ -29,7 +29,7 @@ This application is built using the MERN stack - MongoDB, Express.js, React, and
 
 ## Usage
 
-Visit `http://localhost:3000` on your browser to access the application after starting the server.
+Visit `http://localhost:3001` on your browser to access the application after starting the server.
 
 ## Contributing
 
