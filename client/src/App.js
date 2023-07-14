@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
+import About from './pages/About';
 
 
 const client = new ApolloClient({
@@ -14,13 +15,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<Home />}
-            />
-           
-          </Routes>
+          <Switch>
+            
+          <Route exact path="/" component={Home} />
+          <Route exact path="/About" component={About} />
+          
+            
+          </Switch>
         </div>
       </Router>
     </ApolloProvider>
