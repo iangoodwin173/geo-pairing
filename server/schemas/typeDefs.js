@@ -17,9 +17,14 @@ const typeDefs = gql`
     image: String
     link: String
 
+
   } 
   
   type Cocktail {
+
+  }
+  type Margarita {
+
     idDrink: ID
     strDrink: String
     strInstructions: String
@@ -36,7 +41,11 @@ const typeDefs = gql`
     drinks(username: String): [Drink]
     drink(drinkId: ID!): Drink
     me: User
+
     getCocktails: [Cocktail] 
+
+    getMargarita: [Margarita]
+
   }
 
   type Mutation {
