@@ -6,6 +6,8 @@ import About from './pages/About';
 import './App.css';
 import Navbar from './pages/navbar';
 
+import 'bootstrap/dist/css/bootstrap.css'; // Import Bootstrap CSS file
+
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
