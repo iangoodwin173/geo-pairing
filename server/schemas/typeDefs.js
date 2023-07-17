@@ -18,7 +18,12 @@ const typeDefs = gql`
     link: String
 
   }
+  type Margarita {
+    idDrink: ID
+    strDrink: String
+    strInstructions: String
 
+  }
   type Auth {
     token: ID!
     user: User
@@ -30,6 +35,7 @@ const typeDefs = gql`
     drinks(username: String): [Drink]
     drink(drinkId: ID!): Drink
     me: User
+    getMargarita: [Margarita]
   }
 
   type Mutation {
