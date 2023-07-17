@@ -1,14 +1,11 @@
 import React from 'react';
-import Navbar from './navbar';
+
 
 export default function About() {
     return (
-        
+       
         <div className='about-page-container'>
-            <Navbar className='navbar'></Navbar>
             <p className='about-text'>
-                <br></br>
-                <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
@@ -44,7 +41,12 @@ export default function About() {
                 <br></br>
                 Drink Responsibly. Must be 21+.
                 <br></br>
+                <br></br>
+                Thanks!
+                <br></br>
+                -The Geo-Pairing Team
             </p>
         </div>
+        
     )
 }
