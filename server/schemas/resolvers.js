@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Drink } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -24,9 +26,9 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     getMargarita: async () => {
-      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-      const data = await response.json()
-      return data.drinks
+      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita");
+      const data = await response.json();
+      return data.drinks;
     }
   },
   Mutation: {
