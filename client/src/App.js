@@ -16,34 +16,7 @@ query {
   }
 }`
 
-const GET_COCKTAILS = gql`
-  query {
-    getCocktails {
-      idDrink
-      strDrink
-      strInstructions
-    }
-  }
-`;
 
-// Define a separate component for rendering cocktails
-function Cocktails() {
-  const { loading, error, data } = useQuery(GET_COCKTAILS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error...</p>;
-
-  return (
-    <div>
-      {data.getCocktails.map(cocktail => (
-        <div key={cocktail.idDrink}>
-          <h2>{cocktail.strDrink}</h2>
-          <p>{cocktail.strInstructions}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function App() {
   const {loading, error, data} = useQuery(GET_MARGARITAS)
@@ -65,9 +38,9 @@ function App() {
 
             {/* Add other routes and components here */}
           </Switch>
-          <Cocktails /> {/* Render the Cocktails component */}
+          
 
-          </Switch>
+          
 
         </div>
       </Router>
