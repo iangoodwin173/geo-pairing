@@ -2,7 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Drink } = require('../models');
 const { signToken } = require('../utils/auth');
 const mongoose = require('mongoose');
-
 const resolvers = {
   Query: {
     users: async () => {
@@ -24,19 +23,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
-    getCocktails: async () => {
-      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=cocktail")
-
     getMargarita: async () => {
       const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-
       const data = await response.json()
-      return data.drinks 
+      return data.drinks
     }
   },
-  
-
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -45,19 +37,14 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
     addDrink: async (parent, { drinkText }, context) => {
@@ -66,34 +53,28 @@ const resolvers = {
           drinkText,
           drinkAuthor: context.user.username,
         });
-
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { drinks: drink._id } }
         );
-
         return drink;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
     removeDrink: async (parent, { drinkId }, context) => {
       if (context.user) {
         const drink = await Drink.findOneAndDelete({
           _id: drinkId,
           drinkAuthor: context.user.username,
         });
-
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { drinks: drink._id } }
         );
-
         return drink;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
-
 module.exports = resolvers;
