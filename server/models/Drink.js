@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const drinkSchema = new Schema({
-  drinkId: {
+  _id: {
     type: String,
     required: true,
   },
@@ -27,6 +27,6 @@ const drinkSchema = new Schema({
 
 });
 
-const Book = model('Book', bookSchema);
+const Drink = model('Drink', drinkSchema);
 
-module.exports = Book;
+module.exports = Drink;
