@@ -26,16 +26,15 @@ const resolvers = {
     },
 
     getCocktails: async () => {
-      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=cocktail")
+      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=cocktail");
+      // Process the response and return the data
+    },
 
     getMargarita: async () => {
-      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-
-      const data = await response.json()
-      return data.drinks 
-    }
+      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita");
+      // Process the response and return the data
+    },
   },
-  
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
