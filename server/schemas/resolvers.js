@@ -1,6 +1,8 @@
+const fetch = require('node-fetch');
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Drink } = require('../models');
 const { signToken } = require('../utils/auth');
+const mongoose = require('mongoose');
 
 const resolvers = {
   Query: {
@@ -23,7 +25,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    getCocktails: async () => {
+      const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=cocktail")
+      const data = await response.json()
+      return data.drinks 
+    }
   },
+  
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {

@@ -7,15 +7,24 @@ const typeDefs = gql`
     email: String
     password: String
     drinks: [Drink]!
+    drinksCount: Int
   }
 
   type Drink {
     _id: ID
-    drinkText: String
-    drinkAuthor: String
-    createdAt: String
-  }
+    name: String
+    recipe: String
+    image: String
+    link: String
 
+  } 
+  
+  type Cocktail {
+    idDrink: ID
+    strDrink: String
+    strInstructions: String
+
+  }
   type Auth {
     token: ID!
     user: User
@@ -27,13 +36,14 @@ const typeDefs = gql`
     drinks(username: String): [Drink]
     drink(drinkId: ID!): Drink
     me: User
+    getCocktails: [Cocktail] 
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDrink(drinkText: String!): Drink
-    addComment(drinkId: ID!, commentText: String!): Drink
+    removeDrink(drinkId: ID!): Drink
   }
 `;
 
