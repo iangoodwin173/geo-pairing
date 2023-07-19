@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -14,13 +15,12 @@ const LoginForm = () => {
 
     if (email && password) {
       try {
-        const response = await fetch('/api/users/login', {
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          headers: { 'Content-Type': 'application/json' },
+        const response = await axios.post('/api/users/login', {
+          email,
+          password,
         });
 
-        if (response.ok) {
+        if (response.status === 200) {
           document.location.replace('/userhome');
         } else {
           alert('Failed to log in');
@@ -42,7 +42,6 @@ const LoginForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value.trim())}
               placeholder="Enter email"
-              // className="mb-3"
             />
           </Col>
         </Row>
@@ -68,5 +67,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-

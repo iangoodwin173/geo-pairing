@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -21,21 +22,21 @@ const SignupPage = () => {
     const passwordTrimmed = password.trim();
 
     if (emailTrimmed && fullNameTrimmed && usernameTrimmed && passwordTrimmed) {
-      const response = await fetch('/api/users/signup', {
-        method: 'POST',
-        body: JSON.stringify({
+      try {
+        const response = await axios.post('/api/users/signup', {
           email: emailTrimmed,
           fullName: fullNameTrimmed,
           username: usernameTrimmed,
           password: passwordTrimmed,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+        });
 
-      if (response.ok) {
-        history.push('/');
-      } else {
-        alert(response.statusText);
+        if (response.status === 200) {
+          history.push('/');
+        } else {
+          alert('Failed to sign up');
+        }
+      } catch (error) {
+        console.error('An error occurred during signup:', error);
       }
     }
   };
