@@ -1,15 +1,18 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import {GET_MARGARITAS} from '../utils/queries';
-import landingBackground from '../images/landing-bg.png';
-export default function Home() {
+export default function Contact() {
     const {loading, data} = useQuery(GET_MARGARITAS)
     console.log(data);
-   
     return (
-        <div className='landing-bg-container'>
+        <div>
+            <p>Wanna send George a pint?
+                <br></br>
+                Send it here!
+                <br></br>
+                pintforgeorge@geopairing.com
+            </p>
             
-            <img className='landing-bg-img' src={landingBackground} alt='Big George' />
    
         </div>
     )

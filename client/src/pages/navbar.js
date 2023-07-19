@@ -9,15 +9,18 @@ function Navbar() {
   return (
     <nav className='nav nav-tabs'>
     <ul className='navbar-links'>
-       
+        
+        <li className="nav-item">
+        <Link to="/Home">Home</Link>
+      </li>
       <li className="nav-item">
-        <Link to="/">Home</Link>
+        <Link to="/Dashboard">Dashboard</Link>
       </li>
       <li className="nav-item">
         <Link to="/About">About</Link>
       </li>
       <li className="nav-item">
-        <Link to="/Drinks">Drinks</Link>
+        <Link to="/Contact">Contact</Link>
       </li>
       <li className="nav-item">
         <Link to="/Login">Login</Link>
