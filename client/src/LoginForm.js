@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useMutation } from '@apollo/client';
+// import Auth from '../utils/auth';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -15,12 +16,13 @@ const LoginForm = () => {
 
     if (email && password) {
       try {
-        const response = await axios.post('/api/users/login', {
-          email,
-          password,
+        const response = await fetch('/api/users/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' },
         });
 
-        if (response.status === 200) {
+        if (response.ok) {
           document.location.replace('/userhome');
         } else {
           alert('Failed to log in');
@@ -42,6 +44,7 @@ const LoginForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value.trim())}
               placeholder="Enter email"
+              // className="mb-3"
             />
           </Col>
         </Row>
