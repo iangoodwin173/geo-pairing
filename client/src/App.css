@@ -8,9 +8,20 @@
 }
 
 html {
-  background-color: #EBBB40;
+  background-color: lightgray;
   background-size: cover;
   
+}
+
+.landing-bg-container {
+  overflow: hidden;
+}
+
+.landing-bg-img {
+  display: block;
+  width: 200vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {

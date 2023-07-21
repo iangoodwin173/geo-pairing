@@ -5,6 +5,10 @@ import Home from './pages/Home';
 import LoginForm from './pages/LoginForm';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
+import Navbar from './pages/navbar';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import './App.css';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -15,12 +19,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Navbar></Navbar>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/About" component={About} />
+
           </Switch>
         </div>
       </Router>
