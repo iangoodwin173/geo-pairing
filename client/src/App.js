@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import LoginForm from './pages/LoginForm';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
+import './App.css';
 
 const client = new ApolloClient({
   uri: '/graphql',
