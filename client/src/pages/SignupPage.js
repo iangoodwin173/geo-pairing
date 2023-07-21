@@ -2,12 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
 import { useForm } from 'react-hook-form';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 
 const SIGNUP_MUTATION = gql`
   mutation Signup($email: String!, $fullName: String!, $username: String!, $password: String!) {
@@ -48,9 +48,13 @@ const SignupPage = () => {
 
   return (
     <Container>
+
       <Row className="d-flex align-items-center justify-content-center vh-100">
+
         <Col xs={12} sm={6} className="text-center">
+
           <Form id="signupForm" onSubmit={handleSubmit(onSubmit)}>
+            
             <Form.Control
               {...register('email', { required: "Email is required." })}
               type="email"
@@ -82,9 +86,13 @@ const SignupPage = () => {
             <Button variant="primary" type="submit" style={{ width: '100%' }}>
               Sign Up
             </Button>
+
           </Form>
+
         </Col>
+
       </Row>
+
     </Container>
   );
 };
