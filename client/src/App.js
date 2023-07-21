@@ -7,6 +7,7 @@ import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
 import Navbar from './pages/navbar';
 import Contact from './pages/Contact';
+import About from './pages/About';
 import './App.css';
 
 const client = new ApolloClient({
@@ -26,6 +27,8 @@ function App() {
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/About" component={About} />
+
           </Switch>
         </div>
       </Router>
