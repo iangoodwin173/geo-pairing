@@ -49,6 +49,16 @@ html {
   text-align: center;
 }
 
+.cocktail-results-list {
+  list-style: none;
+  font-weight: bold;
+}
+
+.cocktail-ingredients-list {
+  font-style: italic;
+  font-weight: normal;
+}
+
 .nav-tabs {
   list-style: none;
   display: inline-flex;
@@ -60,8 +70,23 @@ html {
   text-align: center;
 }
 
+.save-button {
+  background: transparent;
+  border-style: none;
+  height: 1px;
+  width: 1px;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
 a {
   text-decoration: none;
+}
+
+.cocktail-results-links {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
 }
 
 .navbar-links {
