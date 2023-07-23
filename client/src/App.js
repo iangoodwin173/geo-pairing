@@ -5,9 +5,10 @@ import Home from './pages/Home';
 import LoginForm from './pages/LoginForm';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
-import Navbar from './pages/navbar';
+import Navbar from './components/navbar';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Redirect from './components/Redirect'
 import './App.css';
 
 const client = new ApolloClient({
@@ -27,7 +28,8 @@ function App() {
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/About" component={About} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/redirect" component={Redirect} />
 
           </Switch>
         </div>

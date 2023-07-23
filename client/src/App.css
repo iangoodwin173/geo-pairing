@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -11,6 +13,11 @@ html {
   background-color: lightgray;
   background-size: cover;
   
+}
+
+.redirect-text {
+  text-align: center;
+  font-size: 50px;
 }
 
 .landing-bg-container {

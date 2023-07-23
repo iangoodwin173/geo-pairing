@@ -10,11 +10,13 @@ import Col from 'react-bootstrap/Col';
 
 
 const SIGNUP_MUTATION = gql`
-  mutation Signup($email: String!, $fullName: String!, $username: String!, $password: String!) {
-    signup(email: $email, fullName: $fullName, username: $username, password: $password) {
-      id
-      email
-      username
+  mutation Mutation($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
 `;
@@ -36,7 +38,7 @@ const SignupPage = () => {
       });
 
       if (response.data) {
-        history.push('/');
+        history.push('/redirect');
       }
     } catch (error) {
       console.error('An error occurred during signup:', error);
