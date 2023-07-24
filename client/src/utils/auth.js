@@ -1,7 +1,7 @@
 import { useMutation, gql } from '@apollo/client';
 import axios from 'axios';
-import fetchCityData from './cityService';
-import fetchCocktailData from './cocktailService';
+import fetchCityData from '../services/cityService';
+import fetchCocktailData from '../services/cocktailService';
 
 const API_URL = 'http://localhost:5000/api/auth/';
 
