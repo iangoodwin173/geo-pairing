@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import '../style/login.css'
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -41,10 +42,11 @@ const LoginForm = () => {
   if (error) return <p>Error occurred during login :(</p>;
 
   return (
-    <Container className="d-flex align-items-center justify-content-center vh-100">
+    <Container className="login-container d-flex align-items-center justify-content-center vh-100">
       <Form onSubmit={handleSubmit(onSubmit)} className="w-50">
         <Row className="mb-3">
           <Col sm={8} className="mx-auto">
+            {/* Use Form.Control from react-bootstrap */}
             <Form.Control 
               {...register('email', { required: "Email is required." })}
               type="email"
@@ -56,6 +58,7 @@ const LoginForm = () => {
 
         <Row className="mb-3">
           <Col sm={8} className="mx-auto">
+            {/* Use Form.Control from react-bootstrap */}
             <Form.Control 
               {...register('password', { required: "Password is required." })}
               type="password"
@@ -66,7 +69,8 @@ const LoginForm = () => {
         </Row>
 
         <div className="text-center">
-          <Button variant="primary" type="submit">
+          {/* Use Button from react-bootstrap */}
+          <Button variant="primary" type="submit" className="login-button">
             Login
           </Button>
         </div>

@@ -1,0 +1,31 @@
+.dashboard-container {
+  text-align: center;
+  margin-top: 70px;
+  margin-left: 20px;
+  background-color: aliceblue;
+}
+
+.row {
+  margin-top: 50px;
+}
+
+.Form.Control {
+  margin-top: 20px;
+}
+
+.header-container {
+  text-align: center;
+  margin-top: 70px;
+  margin-left: 20px;
+  background-color: aliceblue;
+
+}
+
+.h1 {
+  margin-top: 50px;
+}
+
+
+.header-container p {
+font-size: medium;
+}
