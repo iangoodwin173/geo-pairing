@@ -1,21 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
-import '../style/redirect.css'
+import { Link } from 'react-router-dom';
+import '../style/redirect.css';
 
 export default function Redirect() {
   return (
     <div className='redirect-container'>
       <div className='redirect-text'>
-        <p>Successful Sign-Up! 
+        <h1>CHEERS- Sign Up Complete!</h1>
+        <p className='toast-text'> 
+          "Here’s to the nights we’ll never remember 
           <br></br>
-          Please log in with your 
-          <br></br>
-          new credentials to continue
-          <br></br>
-          using this site.
+          with our friends we’ll never forget."
         </p>
-        
-        <Link to="/login">Go to Login</Link> {/* Use Link to navigate to the login page */}
+        <button className='login-button'>
+          <Link to="/login">
+          <span className='login-text'>Login</span>
+          </Link>
+        </button>
+        <p className='button-follow'> to get started!</p>
       </div>
     </div>
   );

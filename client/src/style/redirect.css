@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('../images/whisky-cheers.jpg'); /* Replace 'background-image.jpg' with the actual image file name */
+    background-size: cover;
+    background-position: center;
   }
   
   .redirect-text {
@@ -13,12 +16,33 @@
     background-color: #f0f0f0;
   }
   
-  .redirect-text p {
-    margin: 0;
-  }
-  
   .redirect-text a {
     display: block;
-    margin-top: 20px;
+    color: black;
   }
-  
+
+
+
+.toast-text {
+  font-style: italic;
+  font-size: 24px; /* Add this line to decrease the font size */
+}
+
+.login-button {
+  background-color: #ffd700; /* Gold color */
+  color: #fff; /* White text */
+  padding-left: 50px;
+  padding-right: 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  background-color: #e0aa00; /* Darker gold color on hover */
+}
+.button-follow {
+  font-size: large;
+}  
