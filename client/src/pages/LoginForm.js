@@ -10,10 +10,13 @@ import Col from 'react-bootstrap/Col';
 
 
 const LOGIN_MUTATION = gql`
-  mutation Login($email: String!, $password: String!) {
+  mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      id
-      email
+      token
+      user {
+        _id
+        username
+      }
     }
   }
 `;
@@ -27,7 +30,7 @@ const LoginForm = () => {
     try {
       const response = await login({ variables: { email, password } });
       if (response.data) {
-        history.push('/userhome');
+        history.push('/dashboard');
       }
     } catch (error) {
       console.error('An error occurred during login:', error);
