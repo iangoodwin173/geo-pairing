@@ -42,7 +42,7 @@ const LoginForm = () => {
   if (error) return <p>Error occurred during login :(</p>;
 
   return (
-    <Container className="d-flex align-items-center justify-content-center vh-100">
+    <Container className="login-container d-flex align-items-center justify-content-center vh-100">
       <Form onSubmit={handleSubmit(onSubmit)} className="w-50">
         <Row className="mb-3">
           <Col sm={8} className="mx-auto">

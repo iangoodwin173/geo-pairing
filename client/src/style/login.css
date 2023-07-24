@@ -1,4 +1,6 @@
-/* loginForm.css */
+.login-container {
+  color: white; /* Set the text color to white */
+}
 
 .container {
     display: flex;
@@ -45,7 +47,7 @@
     color: white;
     font-weight: bold;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
