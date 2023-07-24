@@ -1,0 +1,41 @@
+/* style.css */
+
+/* Center the header with top margin */
+.container h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Style the "Fetch Data" button */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  /* Style the list of cocktails */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cocktail-results-list {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  .cocktail-ingredients-list {
+    margin-left: 15px;
+  }
+  

@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import fetchCityData from '../services/cityService';
 import fetchCocktailData from '../services/cocktailService';
 
+import "../style/dashboard.css"
+
 const Dashboard = () => {
   const { register, handleSubmit } = useForm();
   const [cityData, setCityData] = useState(null);
