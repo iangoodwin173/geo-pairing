@@ -1,15 +1,6 @@
 [
 
     {
-      "userName": "user1",
-      "email": "user1@email.com",
-      "password": 111111,
-        "drinks": [],
-        "drinksCount": 4,
-        "__v": 0
-    },
-
-    {
         "userName": "user2",
         "email": "user2@email.com",
         "password": 222222,
