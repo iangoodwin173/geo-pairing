@@ -44,11 +44,16 @@ const LoginForm = () => {
   return (
     <Container className="login-container d-flex align-items-center justify-content-center vh-100">
       <Form onSubmit={handleSubmit(onSubmit)} className="w-50">
+        
         <Row className="mb-3">
+          
           <Col sm={8} className="mx-auto">
+          
             {/* Use Form.Control from react-bootstrap */}
             <Form.Control 
+            
               {...register('email', { required: "Email is required." })}
+              
               type="email"
               placeholder="Enter email"
             />
