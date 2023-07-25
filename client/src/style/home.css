@@ -1,0 +1,15 @@
+.landing-bg-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    viewport-fit: cover;
+    margin-top: 60px;
+   background-color: rgb(220, 219, 219);
+   
+}
+
+.landing-bg-img {
+    max-width: 80%; 
+    height: auto;
+}

@@ -10,6 +10,8 @@ import Navbar from './components/navbar';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Redirect from './components/Redirect';
+import CocktailData from './pages/CocktailData';
+
 import './App.css';
 
 const client = new ApolloClient({
@@ -50,7 +52,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Navbar></Navbar>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <div className="flex-column justify-center align-center min-100-vh bg-light">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginForm} />
@@ -59,6 +61,7 @@ function App() {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/about" component={About} />
             <Route exact path="/redirect" component={Redirect} />
+            <Route exact path="/data" component={CocktailData} />
             
           </Switch>
           <div className={`modal ${showModal ? 'active' : ''}`}>
