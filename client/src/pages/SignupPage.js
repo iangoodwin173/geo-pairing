@@ -7,8 +7,6 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-
 const SIGNUP_MUTATION = gql`
   mutation Mutation($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -20,12 +18,10 @@ const SIGNUP_MUTATION = gql`
     }
   }
 `;
-
 const SignupPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const history = useHistory();
   const [signup, { loading, error }] = useMutation(SIGNUP_MUTATION);
-
   const onSubmit = async ({ email, fullName, username, password }) => {
     try {
       const response = await signup({
@@ -36,7 +32,6 @@ const SignupPage = () => {
           password: password.trim(),
         },
       });
-
       if (response.data) {
         history.push('/redirect');
       }
@@ -44,10 +39,8 @@ const SignupPage = () => {
       console.error('An error occurred during signup:', error);
     }
   };
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error occurred during signup :(</p>;
-
   return (
     <Container>
       <Row className="d-flex align-items-center justify-content-center vh-100">
@@ -59,28 +52,24 @@ const SignupPage = () => {
               placeholder="Enter email"
             />
             {errors.email && <p>{errors.email.message}</p>}
-
             <Form.Control
               {...register('fullName', { required: "Full name is required." })}
               type="text"
               placeholder="Full Name"
             />
             {errors.fullName && <p>{errors.fullName.message}</p>}
-
             <Form.Control
               {...register('username', { required: "Username is required." })}
               type="text"
               placeholder="Username"
             />
             {errors.username && <p>{errors.username.message}</p>}
-
             <Form.Control
               {...register('password', { required: "Password is required." })}
               type="password"
               placeholder="Password"
             />
             {errors.password && <p>{errors.password.message}</p>}
-
             <Button variant="primary" type="submit" style={{ width: '100%' }}>
               Sign Up
             </Button>
@@ -90,5 +79,4 @@ const SignupPage = () => {
     </Container>
   );
 };
-
 export default SignupPage;
