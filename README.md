@@ -1,6 +1,6 @@
 # Geo-Pairing
 
-Geo-Pairing is an innovative online platform that combines retail and community in the world of alcoholic beverages. Users can explore, purchase, suggest, and rate drinks from around the globe.
+Geo-Pairing is an innovative online platform that combines retail and community in the world of alcoholic beverages. Users can explore every kind of drink.
 
 This application is built using the MERN stack - MongoDB, Express.js, React, and Node.js.
 
@@ -15,9 +15,6 @@ This application is built using the MERN stack - MongoDB, Express.js, React, and
 
 ## Features
 
-- Extensive catalogue of alcoholic beverages from around the world.
-- Interactive geo-pairing room for user suggestions and votes.
-- User reviews and ratings.
 - Secure user authentication.
 
 ## Installation

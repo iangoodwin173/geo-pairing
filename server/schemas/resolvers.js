@@ -57,21 +57,36 @@ const resolvers = {
       return { token, user };
       
     },
-    addDrink: async (parent, { drinkText }, context) => {
+    addDrink: async (parent, { name, recipe, image, link }, context) => {
       if (context.user) {
-        const drink = await Drink.create({
-          name: drinkText,
-          // Add other Drink fields as required. For instance:
-          // recipe: "Your recipe here",
-          // image: "Image link here",
-          // link: "Link here",
-        });
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { drinks: drink._id } }
-        );
+        let drink;
+        try {
+          drink = await Drink.create({
+            name,
+            recipe,
+            image,
+            link
+          });
+          console.log('Created drink:', drink);
+        } catch (err) {
+          console.error('Error creating drink:', err);
+        }
+    
+        let updatedUser;
+        try {
+          updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $push: { drinks: drink._id } },
+            { new: true }
+          );
+          console.log('Updated user:', updatedUser);
+        } catch (err) {
+          console.error('Error updating user:', err);
+        }
+    
         return drink;
       }
+    
       throw new AuthenticationError('You need to be logged in!');
     },
     removeDrink: async (parent, { drinkId }, context) => {

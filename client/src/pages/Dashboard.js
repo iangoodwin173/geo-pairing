@@ -1,8 +1,6 @@
-import React from "react";
-import { connect } from 'react-redux'; // Import the connect function from Redux
+import React, { useState, useEffect } from "react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
-import { useForm } from "react-hook-form"; // Removed 'set' from imports
-import { saveCocktail, savedCocktails } from '../utils/actions'; // Assuming saveCocktail is the action you want to dispatch
+import { useForm } from "react-hook-form";
 import fetchCocktailData from "../services/cocktailService";
 import "../style/dashboard.css";
 
@@ -10,13 +8,22 @@ const Dashboard = () => {
   const { register, handleSubmit } = useForm();
   const [cocktailData, setCocktailData] = useState(null);
   const [cocktailIngredients, setIngredients] = useState(null);
-  const [savedCocktails, setSavedCocktails] = useState([]); 
+  // const [savedCocktails, setSavedCocktails] = useState([]);
 
+  const initialSavedCocktails = JSON.parse(localStorage.getItem('savedCocktails')) || [];
+  const [savedCocktails, setSavedCocktails] = useState(initialSavedCocktails);
+
+  
+  useEffect(() => {
+    localStorage.setItem('savedCocktails', JSON.stringify(savedCocktails));
+  }, [savedCocktails]);
   
   const onSubmit = async ({ cocktail }) => {
     try {
       const cocktailDataResult = await fetchCocktailData(cocktail);
-      const cocktailNames = cocktailDataResult.drinks.map((drink) => drink.strDrink);
+      const cocktailNames = cocktailDataResult.drinks.map(
+        (drink) => drink.strDrink
+      );
       const cocktailIngredients = cocktailDataResult.drinks.map((drink) => ({
         ingredient1: drink.strIngredient1,
         ingredient2: drink.strIngredient2,
@@ -40,12 +47,27 @@ const Dashboard = () => {
       console.error("An error occurred while fetching data:", error);
     }
   };
- 
-  const handleSave = (cocktailName, ingredients) => {
-    // Dispatch the 'saveCocktail' action here
-    saveCocktail(cocktailName, ingredients);
-    setSavedCocktails([...savedCocktails, { cocktailName, ingredients }]); // Update the local state with the new cocktail
+
+  
+
+  const handleSave = async (cocktailName, ingredients) => {
+    console.log('Saving:', cocktailName, ingredients);
+    setSavedCocktails([...savedCocktails, {cocktailName, ingredients}]);
+  
+    // Save to backend server
+    const response = await fetch('/api/cocktails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ cocktailName, ingredients }),
+    });
+  
+    if (!response.ok) {
+      console.error('Failed to save cocktail to server:', await response.text());
+    }
   };
+
   return (
     <div className="dashboard-container">
       <div className="header-container">
@@ -75,7 +97,7 @@ const Dashboard = () => {
           </Col>
           <Col className="search-col" sm={5}>
             <Form onSubmit={handleSubmit(onSubmit)}>
-              <Form.Group controlId="ingredient">
+              <Form.Group controlId="city">
                 <Form.Label>
                   {" "}
                   <h2>Cocktail Search</h2>
@@ -119,12 +141,29 @@ const Dashboard = () => {
               </ul>
             </Col>
           ))}
-         </Row>
+        </Row>
       </Container>
       <Container>
         <h2>Saved Cocktails</h2>
         <Row>
-          {savedCocktails.map((cocktail, _index) => (
+        {/* {savedCocktails.map((cocktail, _index) => {
+  console.log('Displaying:', cocktail);  // Add this line
+  return (
+    <Col sm={4} key={cocktail.cocktailName}>
+      <h2>{cocktail.cocktailName}</h2>
+      <ul>
+        {Object.values(cocktail.ingredients).map((ingredient, idx) =>
+          ingredient ? (
+            <li key={`${cocktail.cocktailName}-${idx}`} className="cocktail-ingredients-list">
+              {ingredient}
+            </li>
+          ) : null
+        )}
+      </ul>
+    </Col>
+  );
+})} */}
+          {savedCocktails.map((cocktail, index) => (
             <Col sm={4} key={cocktail.cocktailName}>
               <h2>{cocktail.cocktailName}</h2>
               <ul>
@@ -144,10 +183,5 @@ const Dashboard = () => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    savedCocktails: state.Cocktails, // Assuming you store the saved cocktails in the "Cocktails" property of your Redux state
-  };
-};
 
-export default connect(null, { saveCocktail })(Dashboard);
+export default Dashboard;
