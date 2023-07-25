@@ -109,11 +109,13 @@ const Dashboard = () => {
         </Row>
       </div>
       <h2>Cocktail Data</h2>
+
       <Container>
         <Row>
           {cocktailData && cocktailData.map((cocktail, index) => (
             <Col sm={4} className="cocktail-results-list" key={cocktail}>
               <Button onClick={() => handleSave(cocktail, cocktailIngredients[index])} className="save-button">Save</Button>
+
               {cocktail}:
               <ul>
                 {cocktailIngredients &&
@@ -134,7 +136,7 @@ const Dashboard = () => {
       <Container>
         <h2>Saved Cocktails</h2>
         <Row>
-        {savedCocktails.map((cocktail, _index) => {
+        {/* {savedCocktails.map((cocktail, _index) => {
   console.log('Displaying:', cocktail);  // Add this line
   return (
     <Col sm={4} key={cocktail.cocktailName}>
@@ -150,12 +152,27 @@ const Dashboard = () => {
       </ul>
     </Col>
   );
-})}
+})} */}
+          {savedCocktails.map((cocktail, index) => (
+            <Col sm={4} key={cocktail.cocktailName}>
+              <h2>{cocktail.cocktailName}</h2>
+              <ul>
+                {Object.values(cocktail.ingredients).map((ingredient, idx) =>
+                  ingredient ? (
+                    <li key={idx} className="cocktail-ingredients-list">
+                      {ingredient}
+                    </li>
+                  ) : null
+                )}
+              </ul>
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>
   );
 };
+
 
 export default Dashboard;
 
