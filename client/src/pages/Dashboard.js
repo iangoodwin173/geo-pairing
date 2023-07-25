@@ -95,12 +95,11 @@ const Dashboard = () => {
         </Row>
       </div>
       <h2>Cocktail Data</h2>
-       <Container>
-        
+      <Container>
         <Row>
           {cocktailData && cocktailData.map((cocktail, index) => (
             <Col sm={4} className="cocktail-results-list" key={cocktail}>
-              <button className="save-button"></button>
+              <Button onClick={() => handleSave(cocktail, cocktailIngredients[index])} className="save-button">Save</Button>
               {cocktail}:
               <ul>
                 {cocktailIngredients &&
@@ -141,5 +140,5 @@ const Dashboard = () => {
   );
 };
 
-
 export default Dashboard;
+
