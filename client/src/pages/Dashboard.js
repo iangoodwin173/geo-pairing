@@ -40,8 +40,22 @@ const Dashboard = () => {
     }
   };
 
-  const handleSave = (cocktailName, ingredients) => {
+  const handleSave = async (cocktailName, ingredients) => {
+    console.log('Saving:', cocktailName, ingredients);
     setSavedCocktails([...savedCocktails, {cocktailName, ingredients}]);
+  
+    // Save to backend server
+    const response = await fetch('/api/cocktails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ cocktailName, ingredients }),
+    });
+  
+    if (!response.ok) {
+      console.error('Failed to save cocktail to server:', await response.text());
+    }
   };
 
   return (
@@ -122,6 +136,23 @@ const Dashboard = () => {
       <Container>
         <h2>Saved Cocktails</h2>
         <Row>
+        {/* {savedCocktails.map((cocktail, _index) => {
+  console.log('Displaying:', cocktail);  // Add this line
+  return (
+    <Col sm={4} key={cocktail.cocktailName}>
+      <h2>{cocktail.cocktailName}</h2>
+      <ul>
+        {Object.values(cocktail.ingredients).map((ingredient, idx) =>
+          ingredient ? (
+            <li key={`${cocktail.cocktailName}-${idx}`} className="cocktail-ingredients-list">
+              {ingredient}
+            </li>
+          ) : null
+        )}
+      </ul>
+    </Col>
+  );
+})} */}
           {savedCocktails.map((cocktail, index) => (
             <Col sm={4} key={cocktail.cocktailName}>
               <h2>{cocktail.cocktailName}</h2>

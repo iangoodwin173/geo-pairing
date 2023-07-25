@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const drinkSchema = new Schema({
-  _id: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     required: true,
@@ -24,7 +20,6 @@ const drinkSchema = new Schema({
     type: String,
     required: true,
   },
-
 });
 
 const Drink = model('Drink', drinkSchema);
