@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import fetchCocktailData from "../services/cocktailService";
@@ -8,7 +8,15 @@ const Dashboard = () => {
   const { register, handleSubmit } = useForm();
   const [cocktailData, setCocktailData] = useState(null);
   const [cocktailIngredients, setIngredients] = useState(null);
-  const [savedCocktails, setSavedCocktails] = useState([]);
+  // const [savedCocktails, setSavedCocktails] = useState([]);
+
+  const initialSavedCocktails = JSON.parse(localStorage.getItem('savedCocktails')) || [];
+  const [savedCocktails, setSavedCocktails] = useState(initialSavedCocktails);
+
+  
+  useEffect(() => {
+    localStorage.setItem('savedCocktails', JSON.stringify(savedCocktails));
+  }, [savedCocktails]);
   
   const onSubmit = async ({ cocktail }) => {
     try {
@@ -39,6 +47,8 @@ const Dashboard = () => {
       console.error("An error occurred while fetching data:", error);
     }
   };
+
+  
 
   const handleSave = async (cocktailName, ingredients) => {
     console.log('Saving:', cocktailName, ingredients);
